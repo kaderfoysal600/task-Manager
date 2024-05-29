@@ -256,7 +256,10 @@ table tr:nth-child(even) {
   font-size: 18px !important;
 }
 
-
+.filter-sort{
+  display: flex;
+  align-items: center;
+}
 .filter-section {
   display: flex;
   align-items: center;

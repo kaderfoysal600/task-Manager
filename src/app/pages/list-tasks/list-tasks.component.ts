@@ -1,8 +1,5 @@
 import { TaskComponent } from './../../dialog/task/task.component';
-import { DatePipe } from '@angular/common';
-import { HttpHeaders } from '@angular/common/http';
 import { ChangeDetectorRef, Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -12,6 +9,7 @@ import { AuthService } from 'src/app/service/auth.service';
 import { TaskService } from 'src/app/service/task.service';
 import { UiService } from 'src/app/service/ui.service';
 import { ConfirmDialogComponent } from 'src/app/shared/dialog/confirm-dialog/confirm-dialog.component';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 interface Task {
   id: string;
@@ -77,6 +75,12 @@ export class ListTasksComponent implements OnInit, AfterViewInit {
       return order === 'asc' ? dateA.getTime() - dateB.getTime() : dateB.getTime() - dateA.getTime();
     });
     this.dataSource.data = this.filteredTasks;
+  }
+
+  drop(event: CdkDragDrop<Task[]>) {
+    const previousIndex = this.dataSource.data.findIndex((task) => task === event.item.data);
+    moveItemInArray(this.dataSource.data, previousIndex, event.currentIndex);
+    this.dataSource.data = [...this.dataSource.data]; // Update data source to reflect changes
   }
 
   public openEditControllerDialog(data?: any) {

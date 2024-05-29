@@ -5,6 +5,7 @@
         <button mat-raised-button color="primary" (click)="openEditControllerDialog()">Add New</button>
       </div>
       <h1>Data of All Task</h1>
+     <div class="filter-sort">
       <div class="filter-section">
         <mat-form-field appearance="outline">
           <mat-label>Filter by Status</mat-label>
@@ -19,10 +20,11 @@
         <button mat-button (click)="sortTasks('asc')">Sort by Due Date (Ascending)</button>
         <button mat-button (click)="sortTasks('desc')">Sort by Due Date (Descending)</button>
       </div>
+     </div>
     </div>
 
     <div class="table-container">
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" cdkDropList (cdkDropListDropped)="drop($event)">
 
         <!-- Actions Column -->
         <ng-container matColumnDef="actions">
@@ -62,7 +64,7 @@
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" cdkDrag></tr>
       </table>
 
       <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
