@@ -30,27 +30,6 @@ export class AuthService {
     });
   }
 
-
-
-  //divisions
-
-  addDivisions(data: any) {
-    return this.http.post('http://localhost:3000/api/v1/category', data);
-  }
-
-  getAllTask() {
-    return this.http.get('http://localhost:3000/api/v1/category',);
-  }
-
-  updateDivisionById(id: string, data: any) {
-    return this.http.put(
-      'http://localhost:3000/api/updateDivision/' + id,
-      data
-    );
-  }
-  deleteDivision(id: string) {
-    return this.http.delete('http://localhost:3000/api/deleteDivision/' + id);
-  }
-
+ 
   
 }

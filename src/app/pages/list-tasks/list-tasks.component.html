@@ -2,50 +2,70 @@
   <div class="container">
     <div class="section-1-top">
       <div class="add">
-        <button
-          mat-raised-button
-          color="primary"
-          (click)="openEditControllerDialog()"
-        >
-          Add New
-        </button>
+        <button mat-raised-button color="primary" (click)="openEditControllerDialog()">Add New</button>
       </div>
       <h1>Data of All Task</h1>
+      <div class="filter-section">
+        <mat-form-field appearance="outline">
+          <mat-label>Filter by Status</mat-label>
+          <mat-select [(value)]="selectedStatus" (selectionChange)="filterTasks()">
+            <mat-option value="all">All</mat-option>
+            <mat-option value="completed">Completed</mat-option>
+            <mat-option value="not completed">Not Completed</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="sort-section">
+        <button mat-button (click)="sortTasks('asc')">Sort by Due Date (Ascending)</button>
+        <button mat-button (click)="sortTasks('desc')">Sort by Due Date (Descending)</button>
+      </div>
     </div>
+
     <div class="table-container">
-      <table id="ExampleTable">
-        <tr>
-          <th>Actions</th>
-          <th>Title </th>
-          <th>Description</th>
-          <th>Due Date</th>
-          <th>Status</th>
-        </tr>
-        <tr *ngFor="let data of allTask; let i = index">
-          <td class="td-action">
-            <button
-              mat-icon-button
-              color="primary"
-              (click)="openEditControllerDialog(data)"
-              class="edit-button"
-            >
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>Actions</th>
+          <td mat-cell *matCellDef="let data">
+            <button mat-icon-button color="primary" (click)="openEditControllerDialog(data)" class="edit-button">
               <mat-icon>edit</mat-icon>
             </button>
-            <button
-              mat-icon-button
-              color="warn"
-              (click)="openConfirmDialog(data)"
-              class="delete-button"
-            >
+            <button mat-icon-button color="warn" (click)="openConfirmDialog(data)" class="delete-button">
               <mat-icon>delete</mat-icon>
             </button>
           </td>
-          <td>{{ data?.title }}</td>
-          <td>{{ data?.description }}</td>
-          <td>{{ data?.dueDate | date }}</td>
-          <td>{{ data?.status }}</td>
-        </tr>
+        </ng-container>
+
+        <!-- Title Column -->
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef>Title</th>
+          <td mat-cell *matCellDef="let data">{{ data?.title }}</td>
+        </ng-container>
+
+        <!-- Description Column -->
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef>Description</th>
+          <td mat-cell *matCellDef="let data">{{ data?.description }}</td>
+        </ng-container>
+
+        <!-- Due Date Column -->
+        <ng-container matColumnDef="dueDate">
+          <th mat-header-cell *matHeaderCellDef>Due Date</th>
+          <td mat-cell *matCellDef="let data">{{ data?.dueDate | date }}</td>
+        </ng-container>
+
+        <!-- Status Column -->
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef>Status</th>
+          <td mat-cell *matCellDef="let data">{{ data?.status }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
+
+      <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
     </div>
   </div>
 </div>

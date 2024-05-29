@@ -17,7 +17,7 @@ export class TaskComponent implements OnInit {
   @ViewChild('formElement') formElement: NgForm;
   dataForm?: FormGroup;
   // Store Data+
-  divisionData: any;
+  taskData: any;
   constructor(
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<any>,
@@ -30,7 +30,7 @@ export class TaskComponent implements OnInit {
     // Init Data Form
     this.initDataForm();
     if (this.data) {
-      this.divisionData = this.data;
+      this.taskData = this.data;
       this.setFormValue();
     }
   }
@@ -52,7 +52,7 @@ export class TaskComponent implements OnInit {
 
   private setFormValue() {
     this.dataForm.patchValue({
-      ...this.divisionData,
+      ...this.taskData,
     });
   }
 
@@ -67,7 +67,7 @@ export class TaskComponent implements OnInit {
   }
 
   resetEditForm() {
-    this.divisionData = this.data;
+    this.taskData = this.data;
     this.setFormValue();
   }
 

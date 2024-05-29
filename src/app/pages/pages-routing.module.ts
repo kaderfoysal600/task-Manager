@@ -10,14 +10,14 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'list-divisions',
+        redirectTo: 'list-tasks',
         pathMatch: 'full',
       },
       {
-        path: 'list-divisions',
+        path: 'list-tasks',
         loadChildren: () =>
           import('./list-tasks/list-tasks.module').then(
-            (m) => m.ListDivisionsModule
+            (m) => m.ListTasksModule
           ),
       },
       

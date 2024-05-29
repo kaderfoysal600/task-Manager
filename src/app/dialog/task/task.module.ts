@@ -9,4 +9,4 @@ import { MaterialModule } from 'src/app/material/material.module';
   imports: [CommonModule, FormsModule, ReactiveFormsModule, MaterialModule],
   exports: [TaskComponent],
 })
-export class DivisionModule {}
+export class TaskModule {}

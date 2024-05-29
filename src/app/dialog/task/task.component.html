@@ -1,6 +1,6 @@
 <div class="dialog-container">
   <div class="dialog-top">
-    <h2>{{ divisionData ? "Edit Task" : "Add Task" }}</h2>
+    <h2>{{ taskData ? "Edit Task" : "Add Task" }}</h2>
     <button mat-icon-button (click)="onClose()">
       <mat-icon>close</mat-icon>
     </button>
@@ -47,13 +47,13 @@
     </mat-radio-group>
 
     <button mat-raised-button color="primary" type="submit">
-      {{ divisionData ? "Update" : "Add" }}
+      {{ taskData ? "Update" : "Add" }}
     </button>
     <a
       style="margin-left: 5px"
       mat-raised-button
       color="accent"
-      *ngIf="divisionData"
+      *ngIf="taskData"
       (click)="resetEditForm()"
       >Reset Data</a
     >
@@ -61,7 +61,7 @@
       style="margin-left: 5px"
       mat-raised-button
       color="accent"
-      *ngIf="!divisionData"
+      *ngIf="!taskData"
       (click)="resetAddForm()"
       >Reset Data</a
     >
