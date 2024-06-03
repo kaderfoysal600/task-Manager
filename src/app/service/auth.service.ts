@@ -1,35 +1,42 @@
+// src/app/services/auth.service.ts
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class AuthService {
-  constructor(public http: HttpClient, public router: Router) {}
 
+  constructor(private afAuth: AngularFireAuth) { }
 
-
-
-  onLogin(data: any) {
-    return this.http.post('http://localhost:3000/api/v1/login', data);
-  }
-
-  getProtectedData(): Observable<any> {
-    const token = sessionStorage.getItem('token'); // Get token from session storage
-
-    if (!token) {
-      console.error('No token found');
-      this.router.navigate(['/auth/login']);
-      return new Observable();
+  async login(email: string, password: string): Promise<void> {
+    try {
+      await this.afAuth.signInWithEmailAndPassword(email, password);
+    } catch (error) {
+      console.error("Login Error: ", error);
+      throw error; // Rethrow the error to be handled in the component
     }
-
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get('http://localhost:3000/api/protected-route', {
-      headers,
-    });
   }
 
- 
-  
+  async register(email: string, password: string): Promise<void> {
+    try {
+      await this.afAuth.createUserWithEmailAndPassword(email, password);
+    } catch (error) {
+      console.error("Registration Error: ", error);
+      throw error; // Rethrow the error to be handled in the component
+    }
+  }
+
+  async logout(): Promise<void> {
+    try {
+      await this.afAuth.signOut();
+    } catch (error) {
+      console.error("Logout Error: ", error);
+      throw error; // Rethrow the error to be handled in the component
+    }
+  }
+
+  getCurrentUser() {
+    return this.afAuth.authState;
+  }
 }

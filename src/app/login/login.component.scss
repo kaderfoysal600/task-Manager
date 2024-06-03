@@ -1,0 +1,87 @@
+/* Parent Container Styles */
+.parent-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #f7f7f7;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* Header Styles */
+.parent-container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Label Styles */
+form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+    text-align: left;
+}
+
+/* Input Styles */
+form input {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+}
+
+form input:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Button Styles */
+form button[type="submit"] {
+    padding: 10px 20px;
+    border: none;
+    background: #007BFF;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    max-width: 100px;
+    margin: auto;
+}
+
+form button[type="submit"]:hover {
+    background: #0056b3;
+}
+
+/* Additional Text and Button Styles */
+.parent-container p {
+    margin: 15px 0;
+    color: #555;
+}
+
+.parent-container button {
+    padding: 10px 20px;
+    border: none;
+    background: #28a745;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.parent-container button:hover {
+    background: #218838;
+}
