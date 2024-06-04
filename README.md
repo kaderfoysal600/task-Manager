@@ -15,7 +15,6 @@ This project is a Task Management Application built with Angular. It features a 
 - **Optional Features**:
   - Pagination for task lists.
   - Drag-and-drop functionality to reorder tasks.
-  - Backend integration for real-time updates using WebSockets or HTTP requests.
 
 ## Getting Started
 Follow these instructions to get a copy of the project up and running on your local machine.
@@ -31,4 +30,4 @@ Follow these instructions to get a copy of the project up and running on your lo
    cd [repository-folder]
    Install Dependencies: npm install
    Run the Development Server: ng serve / npm run start
-   
+
