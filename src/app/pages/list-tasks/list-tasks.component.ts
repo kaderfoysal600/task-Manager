@@ -50,10 +50,19 @@ export class ListTasksComponent implements OnInit, AfterViewInit {
     });
   }
 
+
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
-
+async logout() {
+    try {
+      await this.authService.logout();
+      this.router.navigate(['/login']); // Navigate to login page after logout
+    } catch (error) {
+      console.error("Logout Error: ", error);
+      // Handle logout error
+    }
+  }
   filterTasks() {
     console.log('this.selectedStatus', this.selectedStatus);
     if (this.selectedStatus === 'all') {

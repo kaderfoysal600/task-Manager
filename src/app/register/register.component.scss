@@ -1,21 +1,25 @@
-/* Parent Container Styles */
 .parent-container {
     width: 100%;
     max-width: 400px;
     margin: 50px auto;
     padding: 20px;
-    background: #f7f7f7;
+    background: linear-gradient(135deg, #6a11cb, #2575fc); /* Updated gradient */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     text-align: center;
+    font-family: 'Roboto', sans-serif;
+    transition: box-shadow 0.3s ease;
+}
+
+.parent-container:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 /* Header Styles */
 .parent-container h2 {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     margin-bottom: 20px;
-    color: #333;
-    font-family: 'Arial', sans-serif;
+    color: #fff;
 }
 
 /* Form Styles */
@@ -27,8 +31,7 @@ form {
 /* Label Styles */
 form label {
     margin-bottom: 5px;
-    font-weight: bold;
-    color: #555;
+    color: #fff;
     text-align: left;
 }
 
@@ -40,6 +43,7 @@ form input {
     border-radius: 5px;
     font-size: 16px;
     outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 form input:focus {
@@ -68,7 +72,7 @@ form button[type="submit"]:hover {
 /* Additional Text and Button Styles */
 .parent-container p {
     margin: 15px 0;
-    color: #555;
+    color: #fff;
 }
 
 .parent-container button {

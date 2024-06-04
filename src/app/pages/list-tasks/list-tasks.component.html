@@ -2,7 +2,10 @@
   <div class="container">
     <div class="section-1-top">
       <div class="add">
-        <button mat-raised-button color="primary" (click)="openEditControllerDialog()">Add New</button>
+        <div class="actions">
+          <button mat-raised-button color="primary" (click)="openEditControllerDialog()">Add New</button>
+        <button mat-raised-button color="warn" (click)="logout()">Logout</button>
+        </div>
       </div>
       <h1>Data of All Task</h1>
      <div class="filter-sort">

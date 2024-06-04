@@ -36,6 +36,15 @@ export class AuthService {
     }
   }
 
+  async resetPassword(email: string): Promise<void> {
+    try {
+      await this.afAuth.sendPasswordResetEmail(email);
+    } catch (error) {
+      console.error("Password Reset Error: ", error);
+      throw error; // Rethrow the error to be handled in the component
+    }
+  }
+
   getCurrentUser() {
     return this.afAuth.authState;
   }
